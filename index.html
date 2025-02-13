@@ -12,6 +12,7 @@
             text-align: center;
             margin: 0;
             overflow: hidden;
+            position: relative;
         }
         .container {
             position: relative;
@@ -20,6 +21,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            z-index: 2;
         }
         .message {
             font-size: 28px;
@@ -66,32 +68,58 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .hidden-images {
-            display: none;
-            margin-top: 20px;
-        }
         .hidden-images img {
-            width: 200px;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            width: 150px;
+            border: 5px solid white;
+            border-radius: 15px;
+            position: absolute;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+        .full-screen-hearts {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 192, 203, 0.8);
+            display: none;
+            z-index: 1;
+            animation: fadeOut 2s forwards;
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; display: none; }
         }
     </style>
 </head>
 <body>
+    <div class="full-screen-hearts" id="full-screen-hearts"></div>
     <div class="container">
         <h1 style="font-size: 36px; color: #ff1493; text-shadow: 3px 3px #fff; animation: fadeIn 3s ease-in-out forwards;">💖 Happy Valentine's Day, My Love! 💖</h1>
         <p class="message">You are the most special person in my life, and I love you more than words can say! 🥰</p>
-        <button class="heart-button" onclick="revealContent()">Click Me 💖</button>
+        <button class="heart-button" id="heart-button" onclick="revealContent()">Click Me 💖</button>
         <p class="hidden-message" id="hidden-message">You make my world brighter every day! 🌟💖</p>
         <div class="hidden-images" id="hidden-images">
-            <img src="IMG_4595.jpg" alt="Photo 1">
+            <img src="IMG_4595" alt="Photo 1" id="photo1">
+            <img src="https://via.placeholder.com/150" alt="Photo 2" id="photo2">
+            <img src="https://via.placeholder.com/150" alt="Photo 3" id="photo3">
         </div>
     </div>
     <script>
+        let clickCount = 0;
         function revealContent() {
-            document.getElementById('hidden-message').style.display = 'block';
-            document.getElementById('hidden-images').style.display = 'block';
+            if (clickCount === 0) {
+                document.getElementById('full-screen-hearts').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('full-screen-hearts').style.display = 'none';
+                }, 2000);
+                document.getElementById('heart-button').innerText = "Click Me Again 💖";
+            } else if (clickCount <= 3) {
+                let photo = document.getElementById(`photo${clickCount}`);
+                photo.style.display = 'block';
+                photo.style.top = Math.random() * 80 + 'vh';
+                photo.style.left = Math.random() * 80 + 'vw';
+            }
+            clickCount++;
         }
     </script>
 </body>
