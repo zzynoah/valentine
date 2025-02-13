@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #ffb6c1;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .message {
+            font-size: 28px;
+            color: #ff1493;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            text-shadow: 2px 2px #fff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .heart-button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            font-size: 20px;
+            background: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 0px #d1477e;
+            font-family: 'Comic Neue', cursive;
+            animation: pulse 1.5s infinite alternate;
+        }
+        .heart-button:hover {
+            background: #ff1493;
+            transform: scale(1.2);
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .hidden-message {
+            margin-top: 20px;
+            font-size: 22px;
+            display: none;
+            color: #ff4500;
+            text-shadow: 2px 2px #fff;
+            animation: bounceIn 1s ease-in-out forwards;
+        }
+        @keyframes bounceIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .hidden-image {
+            display: none;
+            margin-top: 20px;
+            width: 300px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 36px; color: #ff1493; text-shadow: 3px 3px #fff; animation: fadeIn 3s ease-in-out forwards;">💖 Happy Valentine's Day, My Love! 💖</h1>
+        <p class="message">You are the most special person in my life, and I love you more than words can say! 🥰</p>
+        <button class="heart-button" onclick="revealContent()">Click Me 💖</button>
+        <p class="hidden-message" id="hidden-message">You make my world brighter every day! 🌟💖</p>
+        <img src="/Users/zhangziyang/Downloads/IMG_4595.jpg" id="hidden-image" class="hidden-image" alt="Our Special Moment">
+    </div>
+    <script>
+        function revealContent() {
+            document.getElementById('hidden-message').style.display = 'block';
+            document.getElementById('hidden-image').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
