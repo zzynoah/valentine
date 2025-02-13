@@ -66,6 +66,16 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .hidden-images {
+            display: none;
+            margin-top: 20px;
+        }
+        .hidden-images img {
+            width: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -74,12 +84,15 @@
         <p class="message">You are the most special person in my life, and I love you more than words can say! 🥰</p>
         <button class="heart-button" onclick="revealContent()">Click Me 💖</button>
         <p class="hidden-message" id="hidden-message">You make my world brighter every day! 🌟💖</p>
+        <div class="hidden-images" id="hidden-images">
+            <img src="IMG_4595.jpg" alt="Photo 1">
+        </div>
     </div>
     <script>
         function revealContent() {
             document.getElementById('hidden-message').style.display = 'block';
+            document.getElementById('hidden-images').style.display = 'block';
         }
     </script>
 </body>
 </html>
-
