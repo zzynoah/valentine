@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #ffb6c1;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+        .message {
+            font-size: 28px;
+            color: #ff1493;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+            text-shadow: 2px 2px #fff;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        .heart-button {
+            margin-top: 20px;
+            padding: 15px 25px;
+            font-size: 20px;
+            background: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 3px 3px 0px #d1477e;
+            font-family: 'Comic Neue', cursive;
+            animation: pulse 1.5s infinite alternate;
+            position: relative;
+            z-index: 3;
+        }
+        .heart-button:hover {
+            background: #ff1493;
+            transform: scale(1.2);
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+        .big-heart {
+            position: fixed;
+            bottom: 0px;
+            left: 50%;
+            font-size: 200px;
+            color: red;
+            opacity: 1;
+            animation: riseHeart 4s ease-in-out infinite;
+        }
+        @keyframes riseHeart {
+            from { transform: translateX(-50%) translateY(100vh) scale(1); opacity: 1; }
+            to { transform: translateX(-50%) translateY(-100vh) scale(1); opacity: 0; }
+        }
+        .hidden-images img {
+            width: 250px;
+            height: auto;
+            border: 10px solid white;
+            border-radius: 15px;
+            position: absolute;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            display: none;
+            transform: rotate(var(--rotation));
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="font-size: 36px; color: #ff1493; text-shadow: 3px 3px #fff; animation: fadeIn 3s ease-in-out forwards;">💖 Happy Valentine's Day, vvYu! 💖</h1>
+        <p class="message">You are the most special person in my life, and I love you more than words can say! (Cliché but true) 🥰</p>
+        <button class="heart-button" id="heart-button" onclick="revealContent()">Click Me 💖</button>
+        <div id="hearts-container"></div>
+        <div class="hidden-images" id="hidden-images">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_2975.jpg?raw=true" alt="Photo 1" id="photo1">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_3917.jpg?raw=true" alt="Photo 2" id="photo2">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4582.jpg?raw=true" alt="Photo 3" id="photo3">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4591.jpg?raw=true" alt="Photo 4" id="photo4">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4595.jpg?raw=true" alt="Photo 5" id="photo5">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4796.jpg?raw=true" alt="Photo 6" id="photo6">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4798.jpg?raw=true" alt="Photo 7" id="photo7">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_4799.jpg?raw=true" alt="Photo 8" id="photo8">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5018.jpg?raw=true" alt="Photo 9" id="photo9">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5499.jpg?raw=true" alt="Photo 10" id="photo10">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5752.jpg?raw=true" alt="Photo 11" id="photo11">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5837.jpg?raw=true" alt="Photo 12" id="photo12">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5885.jpg?raw=true" alt="Photo 13" id="photo13">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5893.jpg?raw=true" alt="Photo 14" id="photo14">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5899.jpg?raw=true" alt="Photo 15" id="photo15">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_5902.jpg?raw=true" alt="Photo 16" id="photo16">
+            <img src="https://github.com/zzynoah/valentine/blob/main/IMG_6093.jpg?raw=true" alt="Photo 17" id="photo17">
+        </div>
+    </div>
+    <script>
+        let clickCount = 0;
+        const totalImages = 17;
+        function revealContent() {
+            if (clickCount === 0) {
+                for (let i = 0; i < 10; i++) {
+                    let heart = document.createElement('div');
+                    heart.classList.add('big-heart');
+                    heart.innerText = '❤️';
+                    heart.style.left = Math.random() * 90 + 'vw';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    document.getElementById('hearts-container').appendChild(heart);
+                }
+                document.getElementById('heart-button').innerText = "Click(CHA) Me Again 💖";
+            } else {
+                let imageIndex = (clickCount - 1) % totalImages + 1;
+                let photo = document.getElementById(`photo${imageIndex}`);
+                let button = document.getElementById('heart-button');
+                let buttonRect = button.getBoundingClientRect();
+                let topPos, leftPos;
+                do {
+                    topPos = Math.random() * 70 + 'vh';
+                    leftPos = Math.random() * 70 + 'vw';
+                } while (
+                    Math.abs(parseFloat(topPos) - buttonRect.top) < 100 &&
+                    Math.abs(parseFloat(leftPos) - buttonRect.left) < 100
+                );
+                
+                photo.style.display = 'block';
+                photo.style.top = topPos;
+                photo.style.left = leftPos;
+                photo.style.setProperty('--rotation', `${(Math.random() * 15 - 7.5)}deg`);
+            }
+            clickCount++;
+        }
+    </script>
+</body>
+</html>
